@@ -1,0 +1,485 @@
+/* ======================================================
+   THE BUNION — press.css  (fully self-contained, no styles.css)
+   ====================================================== */
+
+/* Hard reset — overrides anything styles.css might inject */
+html, body, div, span, h1, h2, h3, h4, h5, h6,
+p, a, figure, figcaption, footer, header, main, nav,
+aside, article, ul, ol, li, table, thead, tbody,
+tfoot, tr, th, td, time, blockquote, cite {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+ol, ul { list-style: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* ======================================================
+   THE BUNION — press.css
+   Visual style closely emulating The Onion newspaper layout.
+   ====================================================== */
+
+:root {
+  --o-black:        #000000;
+  --o-near-black:   #111111;
+  --o-dark:         #1a1a1a;
+  --o-charcoal:     #2b2b2b;
+  --o-red:          #cc0000;
+  --o-white:        #ffffff;
+  --o-off-white:    #f4f4f4;
+  --o-rule:         #dddddd;
+  --o-rule-dark:    #333333;
+  --o-text:         #111111;
+  --o-muted:        #666666;
+  --o-caption-bg:   #f0f0f0;
+  --o-tag-bg:       #eeeeee;
+  --o-ad-bg:        #f9f9f9;
+  --o-ad-border:    #cccccc;
+
+  --font-nameplate: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-nav:       'Oswald', 'Arial Narrow', sans-serif;
+  --font-headline:  'Libre Baskerville', Georgia, serif;
+  --font-body:      'Libre Baskerville', Georgia, serif;
+  --font-ui:        'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+
+  --max-w: 1160px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body.press-page {
+  margin: 0;
+  background: var(--o-white);
+  color: var(--o-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+a { color: var(--o-near-black); text-decoration: none; }
+a:hover { color: var(--o-red); text-decoration: underline; }
+p { margin: 0 0 0.85em; }
+
+/* ---- SITE NAV BAR ------------------------------------ */
+.site-nav-bar {
+  background: var(--o-charcoal);
+  color: #aaa;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.site-nav-bar__home { color: #ccc; }
+.site-nav-bar__home:hover { color: var(--o-white); text-decoration: none; }
+.site-nav-bar__title { color: #777; font-style: italic; text-transform: none; letter-spacing: 0; }
+
+/* ---- HEADER ------------------------------------------ */
+.onion-header { border-bottom: 3px solid var(--o-black); }
+
+/* Utility bar */
+.onion-header__utility {
+  background: var(--o-near-black);
+  padding: 0.25rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.onion-header__utility-left,
+.onion-header__utility-right {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: #888;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.onion-header__utility-right a { color: #888; }
+.onion-header__utility-right a:hover { color: var(--o-red); text-decoration: none; }
+
+/* Nameplate — big black bar, white condensed bold text */
+.onion-header__nameplate-wrap {
+  background: var(--o-black);
+  padding: 0.7rem 1.25rem 0.6rem;
+  text-align: center;
+}
+.onion-header__nameplate {
+  font-family: var(--font-nameplate);
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 700;
+  color: var(--o-white);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  display: block;
+}
+.onion-header__tagline {
+  font-family: var(--font-ui);
+  font-size: 0.67rem;
+  color: #888;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Nav bar — dark charcoal */
+.onion-header__nav-wrap {
+  background: var(--o-charcoal);
+  border-bottom: 1px solid #444;
+}
+.onion-header__nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.onion-nav { display: flex; flex-wrap: wrap; }
+.onion-nav a {
+  font-family: var(--font-nav);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #cccccc;
+  padding: 0.55rem 0.9rem;
+  display: inline-block;
+  border-right: 1px solid #444;
+}
+.onion-nav a:first-child { border-left: 1px solid #444; }
+.onion-nav a:hover {
+  color: var(--o-white);
+  background: var(--o-red);
+  text-decoration: none;
+}
+.onion-header__edition {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  color: #777;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-left: 1rem;
+}
+
+/* ---- MAIN LAYOUT ------------------------------------- */
+.onion-main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 3rem;
+}
+.onion-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ---- ARTICLE ----------------------------------------- */
+.onion-article__category {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-red);
+  border-top: 3px solid var(--o-red);
+  padding-top: 0.3rem;
+  margin-bottom: 0.65rem;
+}
+
+.onion-article__headline {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--o-black);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.onion-article__deck {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--o-dark);
+  line-height: 1.45;
+  margin: 0 0 0.65rem;
+  border-bottom: 1px solid var(--o-rule);
+  padding-bottom: 0.65rem;
+}
+
+.onion-article__photo {
+  margin: 0.75rem 0 0.85rem;
+  border: 1px solid var(--o-rule);
+}
+.onion-article__photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: top center;
+}
+.onion-article__photo figcaption {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  color: var(--o-muted);
+  background: var(--o-caption-bg);
+  border-top: 1px solid var(--o-rule);
+  padding: 0.4rem 0.6rem;
+  line-height: 1.4;
+}
+.photo-credit {
+  display: block;
+  font-weight: 700;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  margin-top: 0.15rem;
+}
+.onion-article__photo--inline {
+  float: right;
+  width: 300px;
+  margin: 0.25rem 0 1rem 1.5rem;
+  clear: right;
+}
+
+.onion-article__byline {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  color: var(--o-muted);
+  border-top: 2px solid var(--o-rule-dark);
+  border-bottom: 1px solid var(--o-rule);
+  padding: 0.35rem 0;
+  margin-bottom: 0.85rem;
+}
+
+/* 3-column body — The Onion signature layout */
+.onion-article__body {
+  font-size: 0.96rem;
+  line-height: 1.72;
+  column-count: 3;
+  column-gap: 1.5rem;
+  column-rule: 1px solid var(--o-rule);
+}
+.onion-article__body p { margin: 0 0 0.85em; }
+.onion-article__dateline strong {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Pull quote breaks all columns */
+.onion-pullquote {
+  column-span: all;
+  border-top: 3px solid var(--o-black);
+  border-bottom: 3px solid var(--o-black);
+  margin: 0.85rem 0 1rem;
+  padding: 0.7rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+.onion-pullquote blockquote {
+  font-family: var(--font-headline);
+  font-size: 1.55rem;
+  font-style: italic;
+  font-weight: 700;
+  margin: 0;
+  color: var(--o-black);
+  line-height: 1.2;
+  flex: 1;
+}
+.onion-pullquote cite {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--o-muted);
+  font-style: normal;
+  flex: 1;
+  padding-top: 0.25rem;
+  border-left: 2px solid var(--o-rule);
+  padding-left: 0.85rem;
+  line-height: 1.45;
+}
+
+.onion-article__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--o-muted);
+  border-top: 1px solid var(--o-rule);
+  padding-top: 0.6rem;
+  margin-top: 1rem;
+}
+.onion-article__tags > span {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.15rem;
+}
+.onion-article__tags a {
+  background: var(--o-tag-bg);
+  color: var(--o-near-black);
+  padding: 0.15em 0.6em;
+  border: 1px solid #ddd;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.onion-article__tags a:hover {
+  background: var(--o-red);
+  color: var(--o-white);
+  border-color: var(--o-red);
+  text-decoration: none;
+}
+
+/* ---- SIDEBAR ----------------------------------------- */
+.onion-sidebar {
+  border-left: 1px solid var(--o-rule);
+  padding-left: 1.5rem;
+}
+.onion-sidebar__section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--o-rule);
+}
+.onion-sidebar__section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.onion-sidebar__heading {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-red);
+  border-top: 3px solid var(--o-red);
+  padding-top: 0.3rem;
+  margin-bottom: 0.65rem;
+}
+
+.onion-sidebar__list { list-style: none; padding: 0; margin: 0; }
+.onion-sidebar__list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--o-rule);
+  line-height: 1.3;
+}
+.onion-sidebar__list li:last-child { border-bottom: none; }
+.onion-sidebar__list a {
+  font-family: var(--font-headline);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--o-near-black);
+  display: block;
+  line-height: 1.25;
+}
+.onion-sidebar__list a:hover { color: var(--o-red); text-decoration: none; }
+.onion-sidebar__byline {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--o-muted);
+  margin-top: 0.15rem;
+  font-style: italic;
+}
+
+.onion-numbers { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.8rem; }
+.onion-numbers tr { border-bottom: 1px solid var(--o-rule); }
+.onion-numbers tr:last-child { border-bottom: none; }
+.onion-numbers td { padding: 0.35rem 0.25rem; vertical-align: middle; line-height: 1.35; }
+.onion-numbers__stat {
+  font-family: var(--font-nameplate);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--o-red);
+  width: 3.25rem;
+  text-align: right;
+  padding-right: 0.75rem;
+  white-space: nowrap;
+}
+
+.onion-sidebar__section--ad .onion-sidebar__heading { color: var(--o-muted); border-top-color: var(--o-rule); }
+.fake-ad { background: var(--o-ad-bg); border: 1px solid var(--o-ad-border); padding: 1rem; text-align: center; }
+.fake-ad__brand {
+  font-family: var(--font-nameplate);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--o-black);
+  margin-bottom: 0.4rem;
+}
+.fake-ad__copy { font-family: var(--font-ui); font-size: 0.76rem; color: var(--o-muted); line-height: 1.45; margin-bottom: 0.65rem; }
+.fake-ad__cta {
+  display: inline-block;
+  background: var(--o-red);
+  color: var(--o-white);
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4em 0.9em;
+}
+
+/* ---- FOOTER ------------------------------------------ */
+.onion-footer {
+  background: var(--o-black);
+  color: #777;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  border-top: 4px solid var(--o-red);
+}
+.onion-footer__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.onion-footer__nameplate {
+  font-family: var(--font-nameplate);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--o-white);
+  margin-bottom: 0.5rem;
+}
+.onion-footer p { margin: 0 0 0.4rem; }
+.onion-footer a { color: #aaa; }
+.onion-footer a:hover { color: var(--o-white); text-decoration: none; }
+
+/* ---- RESPONSIVE -------------------------------------- */
+@media (max-width: 900px) {
+  .onion-layout { grid-template-columns: 1fr; }
+  .onion-sidebar { border-left: none; border-top: 2px solid var(--o-rule-dark); padding-left: 0; padding-top: 1.5rem; }
+  .onion-article__body { column-count: 2; }
+  .onion-article__photo--inline { float: none; width: 100%; margin: 0.75rem 0; }
+}
+@media (max-width: 600px) {
+  .onion-article__body { column-count: 1; }
+  .onion-header__nameplate { font-size: 2.5rem; }
+  .onion-nav { display: none; }
+  .onion-pullquote { flex-direction: column; gap: 0.5rem; }
+  .onion-pullquote cite { border-left: none; border-top: 1px solid var(--o-rule); padding-left: 0; padding-top: 0.5rem; }
+  .onion-article__headline { font-size: 1.5rem; }
+}
